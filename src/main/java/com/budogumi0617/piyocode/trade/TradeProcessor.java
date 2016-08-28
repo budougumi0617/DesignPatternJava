@@ -23,14 +23,40 @@ import java.util.List;
  * @author budougumi0617
  * @note Original code is created by
  *       garymcleanhall.
+ * 
+ * 
+ *       Assume SQL command for add TradeRecord data to trade table in
+ *       jdbc:dummysql://localhost/dummyurl.
+ *
+ *       Dummy database is defined as below.
+ * 
+ *       {@code
+ *       dummysql>descrive trade
+ *       +---------------------+------------+-----+
+ *       | Field               | Type       | Key |
+ *       +---------------------+------------+-----|
+ *       | id                  | Int        | PRI |
+ *       | sourceCurrency      | String     |     |
+ *       | destinationCurrency | String     |     |
+ *       | lots                | Float      |     |
+ *       | price               | BigDecimal |     |
+ *       +---------------------+------------+-----+
+ *       }
  */
 public class TradeProcessor {
 	private static float LotSize = 100000f;
 	private static long newid = 0;
 
+	/**
+	 * Read data, Parse strings, and submit record to database.
+	 * 
+	 * @param stream
+	 *            input data
+	 */
 	public void ProcessTrades(InputStream stream) {
 		// read rows
 		List<String> lines = new ArrayList<String>();
+		// use try-with-resources syntax.
 		try (InputStreamReader isr = new InputStreamReader(stream);
 				BufferedReader bfr = new BufferedReader(isr);) {
 
@@ -40,13 +66,15 @@ public class TradeProcessor {
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
-			return;
+			return; // cannot open reader for stream.
 		}
 
 		List<TradeRecord> trades = new ArrayList<TradeRecord>();
 
 		int lineCount = 1;
 		for (String line : lines) {
+
+			// validate data format.
 			String[] fields = line.split(",");
 
 			if (fields.length != 3) {
@@ -71,6 +99,7 @@ public class TradeProcessor {
 				continue;
 			}
 
+			// set each data to TradeRecord class.
 			BigDecimal tradePrice;
 			try {
 				tradePrice = new BigDecimal(fields[2]);
@@ -96,31 +125,18 @@ public class TradeProcessor {
 			lineCount++;
 		}
 
-		/*
-		 * Assume SQL command for add TradeRecord
-		 * data to trade table in
-		 * jdbc:dummysql://localhost/dummyurl
-		 *
-		 *
-		 * dummysql>descrive trade
-		 * +---------------------+------------+-----+ 
-		 * | Field               | Type       | Key |
-		 * +---------------------+------------+-----|
-		 * | id                  | Int        | PRI |
-		 * | sourceCurrency      | String     |     |
-		 * | destinationCurrency | String     |     |
-		 * | lots                | Float      |     |
-		 * | price               | BigDecimal |     |
-		 * +---------------------+------------+-----+
-		 */
+		// connect database, and create statements for submit data.
 		String dummySqlCommand = "INSERT INTO trade VALUES (?, ?, ?, ?, ?);";
+		// use try-with-resources syntax.
+		// magic spell for connect SQL server.
 		try (Connection connection = DriverManager
 				.getConnection("jdbc:dummysql://localhost/dummyurl");
 				PreparedStatement statement = connection
 						.prepareStatement(dummySqlCommand);) {
-
+			// magic spell.
 			connection.setAutoCommit(false);
 
+			// create SQL command for each trade record.
 			for (TradeRecord trade : trades) {
 				statement.setInt(1, (int) (newid++));
 				statement.setString(2, trade.SourceCurrency);
@@ -136,23 +152,15 @@ public class TradeProcessor {
 			System.out.println("Submit " + result.length + "records.");
 
 			try {
-
 				connection.commit();
 				System.out.println("Submit success");
-
 			} catch (SQLException e) {
-
 				connection.rollback();
 				System.out.println("Submit failed, execute rollback");
-
 				e.printStackTrace();
-
 			}
-
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-
 		}
 	}
 }
