@@ -7,4 +7,6 @@ jdk:
 after_success:
 - ./gradlew jacocoTestReport coveralls
 
-CI_NAME=travis-ci
+env:
+  global:
+      CI_NAME=travis-ci
