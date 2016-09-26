@@ -14,6 +14,7 @@ import com.budougumi0617.strategy.OnlinePaymentInterface.IPaymentStrategy;
  * @note no comment
  */
 public class AmazonPaymentsPaymentStrategy implements IPaymentStrategy {
+	@Override
 	public void ProcessPayment() {
 		System.out.println("Amazon payment chosen");
 	}

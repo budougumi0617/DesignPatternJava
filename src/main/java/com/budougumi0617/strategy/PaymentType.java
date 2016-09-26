@@ -12,8 +12,5 @@ package com.budougumi0617.strategy;
  * @note no comment
  */
 public enum PaymentType {
-    CreditCard,
-    Paypal,
-    GoogleCheckout,
-    AmazonPayments
+	CreditCard, Paypal, GoogleCheckout, AmazonPayments,
 }
