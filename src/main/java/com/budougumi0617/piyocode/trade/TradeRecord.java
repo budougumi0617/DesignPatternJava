@@ -5,7 +5,7 @@
  * @author budougumi0617
  * @date Created on 2016/08/28
  */
-package com.budogumi0617.piyocode.trade;
+package com.budougumi0617.piyocode.trade;
 
 import java.math.BigDecimal;
 
