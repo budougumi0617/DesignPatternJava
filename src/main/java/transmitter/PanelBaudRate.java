@@ -6,17 +6,16 @@ import javax.swing.JPanel;
 
 public class PanelBaudRate extends JPanel implements PanelParameter {
 
-	JLabel labelBaudRate;
+	private JLabel labelBaudRate;
 	@SuppressWarnings("rawtypes")
-	JComboBox comboBaudRate;
+	private JComboBox comboBaudRate;
 
 	public PanelBaudRate() {
 		init();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void init() {
+	private void init() {
 		// TODO 自動生成されたメソッド・スタブ
 
 		//コンボボックスに値を設定する

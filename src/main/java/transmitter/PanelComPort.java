@@ -6,17 +6,16 @@ import javax.swing.JPanel;
 
 public class PanelComPort extends JPanel implements PanelParameter {
 
-	JLabel labelComPort;
+	private JLabel labelComPort;
 	@SuppressWarnings("rawtypes")
-	JComboBox comboComPort;
+	private JComboBox comboComPort;
 
 	public PanelComPort() {
 		this.init();
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void init() {
+	private void init() {
 		// TODO 自動生成されたメソッド・スタブ
 
 		//コンボボックスに値を設定する
