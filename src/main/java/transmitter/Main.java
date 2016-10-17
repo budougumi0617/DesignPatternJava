@@ -1,11 +1,23 @@
+/**
+ * @file 2016/10/13
+ */
 package transmitter;
 
+/**
+ * mainメソッドを持つクラス
+ *
+ * @author ema195y
+ */
 public class Main {
 
+	/**
+	 * 通信アプリGUIインスタンスを生成する
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		// TODO 自動生成されたメソッド・スタブ
-		@SuppressWarnings("unused")
 		BulkTransmitter bulkTransmitter = new BulkTransmitter();
+		bulkTransmitter.setVisible(true);
 	}
 
 }
