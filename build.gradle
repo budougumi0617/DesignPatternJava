@@ -23,10 +23,14 @@ jar {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://mvnrepository.com/artifact/org.rxtx/rxtx"
+    }
 }
 
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group: 'org.rxtx', name: 'rxtx', version: '2.1.7'
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.9.5'
 }
