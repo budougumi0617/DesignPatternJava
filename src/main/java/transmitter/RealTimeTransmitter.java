@@ -57,9 +57,9 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
             			panelBaudRate.getContent());
             }
 		});
-		
+
 		//ボタンアクション
-		textField.getDocument
+	/*
 		addDocumentListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	action.sendButtonAction(panelComPort.getContent(),
@@ -67,6 +67,8 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
 
             }
 		});
+
+		*/
 	}
 
 }
