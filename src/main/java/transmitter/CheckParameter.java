@@ -20,7 +20,7 @@ public class CheckParameter {
 	 * 判定メソッドを管理する
 	 *
 	 * @param content
-	 * @return 
+	 * @return
 	 */
 	public boolean validate(String content) {
 		if(!checkBlank(content)){
@@ -36,10 +36,7 @@ public class CheckParameter {
 	 * @return
 	 */
 	private boolean checkBlank(String content){
-		if(content.equals("[null ]+")){
-			return false;
-		}
-		return true;
+		return content.equals("[null ]+");
 	}
 
 }

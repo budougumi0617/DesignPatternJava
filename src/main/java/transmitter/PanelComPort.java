@@ -19,7 +19,7 @@ public class PanelComPort extends JPanel implements PanelParameter {
 	/** COMポートラベル */
 	private JLabel labelComPort;
 	/** COMポートコンボボックス */
-	private JComboBox<> comboComPort;
+	private JComboBox<String> comboComPort;
 
 	/**
 	 * コンストラクタ
@@ -34,11 +34,11 @@ public class PanelComPort extends JPanel implements PanelParameter {
 	 */
 	private void init() {
 		//コンボボックスに値を設定する
-		String[] combodata = new String[256];
+		String[] combodata = new String[257];
 
 		combodata[0] = "";
 
-		for(int i = 1 ; i < 256 ; i++){
+		for(int i = 1 ; i < 257 ; i++){
 			combodata[i] = "COM"+ Integer.toString(i);
 		}
 
@@ -60,8 +60,7 @@ public class PanelComPort extends JPanel implements PanelParameter {
 	 */
 	@Override
 	public String getContent() {
-		String content = (String)this.comboComPort.getSelectedItem();
-		return content;
+		return comboComPort.getItemAt(comboComPort.getSelectedIndex());
 	}
 
 }

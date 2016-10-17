@@ -28,6 +28,7 @@ public class BulkTransmitter extends JFrame implements Transmitter {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.initMember();
+		setVisible(true);
 	}
 
 	/**

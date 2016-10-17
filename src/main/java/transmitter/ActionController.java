@@ -3,6 +3,12 @@
  */
 package transmitter;
 
+import java.io.IOException;
+
+import gnu.io.NoSuchPortException;
+import gnu.io.PortInUseException;
+import gnu.io.UnsupportedCommOperationException;
+
 /**
  * ボタン押下、入力時の動作を管理するクラス
  *
@@ -56,13 +62,22 @@ public class ActionController {
 			sendSerialData.stream();
 			sendSerialData.close();
 
-		} catch( ex){
+		} catch(NoSuchPortException ex){
 			errorDialog.showErrorDialog("");
 			return;
-		} catch( ex){
+		} catch(PortInUseException ex){
 			errorDialog.showErrorDialog("");
 			return;
-		} catch( ex){
+		} catch(UnsupportedCommOperationException ex){
+			errorDialog.showErrorDialog("");
+			return;
+		} catch(IOException ex){
+			errorDialog.showErrorDialog("");
+			return;
+		} catch(InterruptedException ex){
+			errorDialog.showErrorDialog("");
+			return;
+		} catch(Exception e) {
 			errorDialog.showErrorDialog("");
 			return;
 		}

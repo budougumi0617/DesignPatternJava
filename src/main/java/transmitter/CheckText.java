@@ -23,13 +23,7 @@ public class CheckText {
 	 * @return
 	 */
 	public boolean validate(String text) {
-		if(!checkBlank(text)){
-			return false;
-		}
-		if(!checkLength(text)){
-			return false;
-		}
-		if(!checkType(text)){
+		if(!checkBlank(text) || !checkLength(text) || !checkType(text)){
 			return false;
 		}
 		return true;
@@ -43,10 +37,7 @@ public class CheckText {
 	 * @return
 	 */
 	private boolean checkBlank(String text){
-		if(text.matches("[\t 　]+")){
-			return false;
-		}
-		return true;
+		return text.matches("[\t 　]+");
 	}
 
 	/**
@@ -56,10 +47,7 @@ public class CheckText {
 	 * @return
 	 */
 	private boolean checkLength(String text) {
-		if(text.length() > 16){
-			return false;
-		}
-		return true;
+		return text.length() > 16;
 	}
 
 	/**
@@ -69,10 +57,7 @@ public class CheckText {
 	 * @return
 	 */
 	private boolean checkType(String text) {
-		if(text.matches("^[0-9a-zA-Z]+")){
-			return false;
-		}
-		return true;
+		return text.matches("^[0-9a-zA-Z]+");
 	}
 
 }

@@ -3,8 +3,6 @@
  */
 package transmitter;
 
-import gnu.io.NoSuchPortException;
-
 /**
  * 出力インタフェース
  *
@@ -13,7 +11,7 @@ import gnu.io.NoSuchPortException;
 public interface OutPut {
 
 	void open() throws Exception;
-	void stream() th;
-	void close();
+	void stream() throws Exception;
+	void close() throws Exception;
 
 }

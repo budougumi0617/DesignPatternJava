@@ -16,8 +16,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		BulkTransmitter bulkTransmitter = new BulkTransmitter();
-		bulkTransmitter.setVisible(true);
+		@SuppressWarnings("unused")
+		Transmitter bulkTransmitter = new BulkTransmitter();
 	}
 
 }
