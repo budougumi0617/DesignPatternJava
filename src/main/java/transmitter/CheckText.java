@@ -23,7 +23,7 @@ public class CheckText {
 	 * @return
 	 */
 	public boolean validate(String text) {
-		if(!checkBlank(text) || !checkLength(text) || !checkType(text)){
+		if(checkBlank(text) || checkLength(text) || checkType(text)){
 			return false;
 		}
 		return true;
@@ -31,13 +31,13 @@ public class CheckText {
 
 
 	/**
-	 * 入力値空白判定
+	 * 入力値に空白（タブキー全角・半角スペース）が含まれているか判定する
 	 *
 	 * @param text
-	 * @return
+	 * @return 空白が含まれている場合trueを返し、含まれていなければfalseを返す
 	 */
 	private boolean checkBlank(String text){
-		return text.matches("[\t 　]+");
+		return (text.matches("[\t 　]+"));
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class CheckText {
 	 * @return
 	 */
 	private boolean checkLength(String text) {
-		return text.length() > 16;
+		return (text.length() > 16);
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class CheckText {
 	 * @return
 	 */
 	private boolean checkType(String text) {
-		return text.matches("^[0-9a-zA-Z]+");
+		return text.matches("[^0-9a-zA-Z]+");
 	}
 
 }

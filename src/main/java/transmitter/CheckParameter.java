@@ -23,7 +23,7 @@ public class CheckParameter {
 	 * @return
 	 */
 	public boolean validate(String content) {
-		if(!checkBlank(content)){
+		if(checkBlank(content)){
 			return false;
 		}
 		return true;
