@@ -14,12 +14,6 @@ import javax.swing.JOptionPane;
 public class ErrorDialog {
 
 	/**
-	 * コンストラクタ
-	 */
-	public ErrorDialog(){
-	}
-
-	/**
 	 * エラーダイアログを生成する
 	 *
 	 * @param errorMessage エラー内容のメッセージ

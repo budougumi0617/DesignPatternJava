@@ -3,11 +3,8 @@
  */
 package transmitter;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 /**
  * ErrorDialogクラスのテスト
@@ -37,11 +34,15 @@ public class ErrorDialogTest {
 		ed = null;
 	}
 
+
+
 	/**
 	 * {@link transmitter.ErrorDialog#showErrorDialog(java.lang.String)} のためのテスト・メソッド。
 	 */
 
 	/** 【正常系】 与えられたString引数をエラーダイアログに出力できるか確認 */
+
+	/*
 	@Test
 	public void testShowErrorDialog() {
 		try {
@@ -51,5 +52,7 @@ public class ErrorDialogTest {
 		}
 
 	}
+
+	*/
 
 }
