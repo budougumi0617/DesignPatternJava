@@ -5,7 +5,7 @@ jdk:
 - oraclejdk8
 
 after_success:
-- ./gradlew costomTest jacocoTestReport coveralls
+- ./gradlew customTest jacocoTestReport coveralls
 
 env:
   global:
