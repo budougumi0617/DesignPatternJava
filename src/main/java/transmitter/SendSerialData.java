@@ -9,6 +9,11 @@ import gnu.io.CommPort;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 
+
+/**
+ * 
+ * @author ema195y
+ */
 public class SendSerialData implements OutPut {
 
 	private String comPort;

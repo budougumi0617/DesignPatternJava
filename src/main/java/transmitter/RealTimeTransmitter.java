@@ -22,7 +22,7 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
 	 * コンストラクタ
 	 */
 	public RealTimeTransmitter(){
-	    setTitle("シリアルデータ通信アプリケーション");
+	    setTitle("Arduinoシリアルデータ送信アプリ");
 	    setBounds(100, 100, 586, 287);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -52,20 +52,18 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
 
 		//適用ボタンアクション
 		applyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	action.applyButtonAction(panelComPort.getContent(),
-            			panelBaudRate.getContent());
-            }
+			public void actionPerformed(ActionEvent e) {
+				action.applyButtonAction(panelComPort.getContent(),panelBaudRate.getContent());
+			}
 		});
 
 		//ボタンアクション
 	/*
 		addDocumentListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	action.sendButtonAction(panelComPort.getContent(),
-            			panelBaudRate.getContent(),textField.getText());
-
-            }
+			public void actionPerformed(ActionEvent e) {
+				action.sendButtonAction(panelComPort.getContent(),
+					panelBaudRate.getContent(),textField.getText());
+			}
 		});
 
 		*/

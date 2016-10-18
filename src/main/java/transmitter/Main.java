@@ -16,8 +16,18 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+
+		/** 【要求仕様A】シリアルデータ一括送信 */
 		@SuppressWarnings("unused")
 		Transmitter bulkTransmitter = new BulkTransmitter();
+
+
+		/** 【要求仕様B】シリアルデータリアルタイム送信 */
+		/*
+		@SuppressWarnings("unused")
+		Transmitter RealTimeTransmitter = new RealTimeTransmitter();
+		*/
+
 	}
 
 }

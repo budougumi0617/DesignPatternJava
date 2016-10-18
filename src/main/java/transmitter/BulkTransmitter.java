@@ -23,7 +23,7 @@ public class BulkTransmitter extends JFrame implements Transmitter {
 	 * コンストラクタ
 	 */
 	public BulkTransmitter(){
-	    setTitle("シリアルデータ通信アプリケーション");
+	    setTitle("Arduinoシリアルデータ送信アプリ");
 	    setBounds(100, 100, 586, 287);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

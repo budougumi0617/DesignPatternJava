@@ -22,13 +22,12 @@ public class ErrorDialog {
 	/**
 	 * エラーダイアログを生成する
 	 *
-	 * @param errorMessage
+	 * @param errorMessage エラー内容のメッセージ
 	 * @wbp.parser.entryPoint
 	 */
 	public void showErrorDialog(String errorMessage){
 		JFrame frame = new JFrame();
-		JOptionPane.showMessageDialog(frame, errorMessage);
-
+		JOptionPane.showMessageDialog(frame, errorMessage, "エラー発生", JOptionPane.ERROR_MESSAGE);
 	}
 
 }

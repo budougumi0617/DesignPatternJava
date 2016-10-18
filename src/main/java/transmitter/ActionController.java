@@ -10,16 +10,36 @@ import gnu.io.PortInUseException;
 import gnu.io.UnsupportedCommOperationException;
 
 /**
- * ボタン押下、入力時の動作を管理するクラス
+ * ボタン押下、テキスト入力時の動作を管理するクラス
  *
  * @author ema195y
  */
 public class ActionController {
 
+	/**
+	 * パラメータの入力値を判定する
+	 * CheckParameterクラスのインスタンス
+	 */
 	private CheckParameter checkParameter = new CheckParameter();
+
+	/**
+	 * 入力文字列を判定する
+	 * CheckTextクラスのインスタンス
+	 */
 	private CheckText checkText = new CheckText();
+
+	/**
+	 * パラメータコンボボックスの入力値を判定する
+	 * CheckParameterクラスのインスタンス
+	 */
 	private SendSerialData sendSerialData = new SendSerialData();
+
+	/**
+	 * パラメータコンボボックスの入力値を判定する
+	 * CheckParameterクラスのインスタンス
+	 * */
 	private ErrorDialog errorDialog = new ErrorDialog();
+
 
 	/**
 	 * コンストラクタ
@@ -27,13 +47,16 @@ public class ActionController {
 	public ActionController(){
 	}
 
-/**
- * 送信ボタン押下アクション
- *
- * @param comPort
- * @param baudRate
- * @param text
- */
+
+	/**
+	 * 【要求仕様A】シリアルデータ一括送信
+	 *
+	 * 送信ボタン押下時の動作を管理する
+	 *
+	 * @param comPort
+	 * @param baudRate
+	 * @param text
+	 */
 	public void sendButtonAction(String comPort, String baudRate, String text) {
 
 		//シリアルデータ通信パラメータの判定
@@ -63,33 +86,35 @@ public class ActionController {
 			sendSerialData.close();
 
 		} catch(NoSuchPortException ex){
-			errorDialog.showErrorDialog("");
+			errorDialog.showErrorDialog("COMポート番号が正しいか確認してください。");
 			return;
 		} catch(PortInUseException ex){
-			errorDialog.showErrorDialog("");
+			errorDialog.showErrorDialog("COMポート番号が正しいか確認してください。");
 			return;
 		} catch(UnsupportedCommOperationException ex){
-			errorDialog.showErrorDialog("");
+			errorDialog.showErrorDialog("COMポート番号が正しいか確認してください。");
 			return;
 		} catch(IOException ex){
-			errorDialog.showErrorDialog("");
+			errorDialog.showErrorDialog("エラーが発生しました。");
 			return;
 		} catch(InterruptedException ex){
-			errorDialog.showErrorDialog("");
+			errorDialog.showErrorDialog("エラーが発生しました。");
 			return;
 		} catch(Exception e) {
-			errorDialog.showErrorDialog("");
+			errorDialog.showErrorDialog("エラーが発生しました。");
 			return;
 		}
 
 	}
 
-/**
- * 適用ボタン押下アクション
- *
- * @param comPort
- * @param baudRate
- */
+	/**
+	 * 【要求仕様B】シリアルデータリアルタイム送信
+	 *
+	 * 適用ボタン押下時の動作を管理する
+	 *
+	 * @param comPort
+	 * @param baudRate
+	 */
 	public void applyButtonAction(String comPort, String baudRate) {
 
 		//シリアルデータ通信パラメータの判定
@@ -106,11 +131,13 @@ public class ActionController {
 		sendSerialData.setBaudRate(baudRate);
 	}
 
-/**
- * テキスト入力アクション
- *
- * @param text
- */
+	/**
+	 * 【要求仕様B】シリアルデータリアルタイム送信
+	 *
+	 * テキスト入力時の動作を管理する
+	 *
+	 * @param text
+	 */
 	public void inputAction(String text) {
 
 		//文字列の判定
@@ -131,19 +158,19 @@ public class ActionController {
 		}
 	}
 
-/**
- * シリアルポートクローズアクション
- *
- * @param comPort
- * @param baudRate
- */
+	/**
+	 * 【要求仕様B】シリアルデータリアルタイム送信
+	 *
+	 * シリアルポートを閉じる
+	 *
+	 * @param comPort
+	 * @param baudRate
+	 */
 	public void closeApp() {
-
-		//シリアルポートを閉じる
 		try{
 			sendSerialData.close();
 		} catch(Exception ex){
-			errorDialog.showErrorDialog("ポートを閉じる際にエラーが発生しました");
+			errorDialog.showErrorDialog("ポートを閉じる際にエラーが発生しました。");
 			return;
 		}
 	}

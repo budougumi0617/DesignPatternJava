@@ -9,6 +9,7 @@ package transmitter;
  */
 public interface PanelParameter {
 
+	/** コンボボックス入力値を返すメソッドの定義 */
 	String getContent();
 
 }
