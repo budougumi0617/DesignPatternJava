@@ -40,7 +40,7 @@ public class ActionControllerTest {
 	 */
 
 	/** 【正常系】 引数に正常値のCOMポート番号、ボーレート、文字列を渡した際にシリアル通信できるか判定 */
-	@Test
+	//@Test
 	public void testSendButtonAction1() {
 		try{
 			ac.sendButtonAction("COM4","9600","s");
@@ -51,7 +51,7 @@ public class ActionControllerTest {
 
 	/** 【異常系／引数】 引数に異常値のCOMポート番号を渡した際に
 	 * エラーダイアログ「"COMポート番号が正しいか確認してください。」が出力されるか判定 */
-	@Test
+	//@Test
 	public void testSendButtonAction2() {
 		try{
 			ac.sendButtonAction("","9600","hello");
@@ -62,7 +62,7 @@ public class ActionControllerTest {
 
 	/** 【異常系／引数】 引数に異常値のボーレートを渡した際に
 	 * エラーダイアログ「"ボーレート（ビット／秒）の値が正しいか確認してください。」が出力されるか判定 */
-	@Test
+	//@Test
 	public void testSendButtonAction3() {
 		try{
 			ac.sendButtonAction("COM1","","hello");
@@ -73,7 +73,7 @@ public class ActionControllerTest {
 
 	/** 【異常系／引数】 引数に異常値のメッセージを渡した際に
 	 * エラーダイアログ「"メッセージは半角英数字16文字までです。」が出力されるか判定 */
-	@Test
+	//@Test
 	public void testSendButtonAction4() {
 		try{
 			ac.sendButtonAction("COM1","9700","こんにちは");
