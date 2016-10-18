@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  * エラーダイアログを生成する
  *
  * @author ema195y
+ *
  */
 public class ErrorDialog {
 

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
  * シリアルデータ一括送信GUIを生成するクラス
  *
  * @author ema195y
+ *
  */
 public class BulkTransmitter extends JFrame implements Transmitter {
 

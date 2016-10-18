@@ -13,6 +13,7 @@ import javax.swing.JPanel;
  * ボーレートを設定するクラス
  *
  * @author ema195y
+ *
  */
 public class PanelBaudRate extends JPanel implements PanelParameter {
 

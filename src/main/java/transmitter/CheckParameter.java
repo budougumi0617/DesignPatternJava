@@ -7,14 +7,9 @@ package transmitter;
  * コンボボックスで選択されたパラメータの入力値が異常値か判定するクラス
  *
  * @author ema195y
+ *
  */
 public class CheckParameter {
-
-	/**
-	 * コンストラクタ
-	 */
-	public CheckParameter(){
-	}
 
 	/**
 	 * 判定メソッドを管理する

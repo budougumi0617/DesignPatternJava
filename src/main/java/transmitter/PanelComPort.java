@@ -13,6 +13,7 @@ import javax.swing.JPanel;
  * COMポート番号を設定するクラス
  *
  * @author ema195y
+ *
  */
 public class PanelComPort extends JPanel implements PanelParameter {
 

@@ -7,17 +7,12 @@ package transmitter;
  * 入力文字列が異常値か判定するクラス
  *
  * @author ema195y
+ *
  */
 public class CheckText {
 
 	/** 入力値の最大文字数 */
 	private final int TEXT_MAX_LENGTH  = 16;
-
-	/**
-	 * コンストラクタ
-	 */
-	public CheckText(){
-	}
 
 	/**
 	 * 判定メソッドを管理する
@@ -40,7 +35,7 @@ public class CheckText {
 	 * @return 入力値に空白が含まれている場合trueを返し、含まれていなければfalseを返す
 	 */
 	private boolean checkBlank(String text){
-		return text.matches("[\t 　]+");
+		return text.matches(""+"[\t 　]*+");
 	}
 
 	/**

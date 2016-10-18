@@ -3,9 +3,6 @@
  */
 package transmitter;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -13,6 +10,7 @@ import javax.swing.JFrame;
  * シリアルデータリアルタイム送信GUIを生成するクラス
  *
  * @author ema195y
+ *
  */
 public class RealTimeTransmitter extends JFrame implements Transmitter {
 
@@ -50,15 +48,20 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
 		panelBaudRate.setBounds(274, 32, 280, 60);
 		getContentPane().add(panelBaudRate);
 
+
 		//適用ボタンアクション
+		/*
 		applyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				action.applyButtonAction(panelComPort.getContent(),panelBaudRate.getContent());
 			}
 		});
 
+		*/
+
 		//ボタンアクション
-	/*
+
+		/*
 		addDocumentListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				action.sendButtonAction(panelComPort.getContent(),
@@ -67,6 +70,8 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
 		});
 
 		*/
+
+
 	}
 
 }

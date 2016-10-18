@@ -9,6 +9,7 @@ import javax.swing.JTextField;
  * GUI共通コンポーネントを生成するインタフェース
  *
  * @author ema195y
+ *
  */
 public interface Transmitter{
 

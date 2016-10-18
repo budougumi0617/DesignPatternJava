@@ -13,6 +13,7 @@ import gnu.io.UnsupportedCommOperationException;
  * ボタン押下、テキスト入力時の動作を管理するクラス
  *
  * @author ema195y
+ *
  */
 public class ActionController {
 
@@ -39,13 +40,6 @@ public class ActionController {
 	 * CheckParameterクラスのインスタンス
 	 * */
 	private ErrorDialog errorDialog = new ErrorDialog();
-
-
-	/**
-	 * コンストラクタ
-	 */
-	public ActionController(){
-	}
 
 
 	/**
@@ -107,6 +101,7 @@ public class ActionController {
 
 	}
 
+
 	/**
 	 * 【要求仕様B】シリアルデータリアルタイム送信
 	 *
@@ -115,6 +110,8 @@ public class ActionController {
 	 * @param comPort
 	 * @param baudRate
 	 */
+
+	/*
 	public void applyButtonAction(String comPort, String baudRate) {
 
 		//シリアルデータ通信パラメータの判定
@@ -131,6 +128,8 @@ public class ActionController {
 		sendSerialData.setBaudRate(baudRate);
 	}
 
+	*/
+
 	/**
 	 * 【要求仕様B】シリアルデータリアルタイム送信
 	 *
@@ -138,6 +137,8 @@ public class ActionController {
 	 *
 	 * @param text
 	 */
+
+	/*
 	public void inputAction(String text) {
 
 		//文字列の判定
@@ -158,6 +159,8 @@ public class ActionController {
 		}
 	}
 
+	*/
+
 	/**
 	 * 【要求仕様B】シリアルデータリアルタイム送信
 	 *
@@ -166,6 +169,8 @@ public class ActionController {
 	 * @param comPort
 	 * @param baudRate
 	 */
+
+	/*
 	public void closeApp() {
 		try{
 			sendSerialData.close();
@@ -174,5 +179,7 @@ public class ActionController {
 			return;
 		}
 	}
+
+	*/
 
 }

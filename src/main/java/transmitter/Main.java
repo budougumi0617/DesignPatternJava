@@ -7,6 +7,7 @@ package transmitter;
  * mainメソッドを持つクラス
  *
  * @author ema195y
+ *
  */
 public class Main {
 

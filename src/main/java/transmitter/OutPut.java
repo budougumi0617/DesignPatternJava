@@ -7,6 +7,7 @@ package transmitter;
  * 出力インタフェース
  *
  * @author ema195y
+ *
  */
 public interface OutPut {
 

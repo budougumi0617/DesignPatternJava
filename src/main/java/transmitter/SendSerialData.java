@@ -11,8 +11,10 @@ import gnu.io.SerialPort;
 
 
 /**
- * 
+ * シリアルデータ通信クラス
+ *
  * @author ema195y
+ *
  */
 public class SendSerialData implements OutPut {
 
@@ -20,12 +22,6 @@ public class SendSerialData implements OutPut {
 	private String baudRate;
 	private String text;
 	private SerialPort port;
-
-	/**
-	 * コンストラクタ
-	 */
-	public SendSerialData(){
-	}
 
 	@Override
 	public void open() throws Exception{
