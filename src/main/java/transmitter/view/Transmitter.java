@@ -1,9 +1,11 @@
 /**
  * @file 2016/10/13
  */
-package transmitter;
+package transmitter.view;
 
 import javax.swing.JTextField;
+
+import transmitter.controller.ActionController;
 
 /**
  * GUI共通コンポーネントを生成するインタフェース
@@ -11,7 +13,7 @@ import javax.swing.JTextField;
  * @author ema195y
  *
  */
-public interface Transmitter{
+public interface Transmitter {
 
 	/** テキスト入力フィールド */
 	JTextField textField = new JTextField();

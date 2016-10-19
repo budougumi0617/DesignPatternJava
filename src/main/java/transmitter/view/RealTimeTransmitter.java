@@ -1,7 +1,7 @@
 /**
  * @file 2016/10/13
  */
-package transmitter;
+package transmitter.view;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,15 +14,15 @@ import javax.swing.JFrame;
  */
 public class RealTimeTransmitter extends JFrame implements Transmitter {
 
-	private JButton applyButton = new JButton("適用"); //適用ボタン
+	private JButton applyButton = new JButton("適用"); // 適用ボタン
 
 	/**
 	 * コンストラクタ
 	 */
-	public RealTimeTransmitter(){
-	    setTitle("Arduinoシリアルデータ送信アプリ");
-	    setBounds(100, 100, 586, 287);
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public RealTimeTransmitter() {
+		setTitle("Arduinoシリアルデータ送信アプリ");
+		setBounds(100, 100, 586, 287);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.initMember();
 	}
@@ -48,29 +48,24 @@ public class RealTimeTransmitter extends JFrame implements Transmitter {
 		panelBaudRate.setBounds(274, 32, 280, 60);
 		getContentPane().add(panelBaudRate);
 
-
-		//適用ボタンアクション
+		// 適用ボタンアクション
 		/*
-		applyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				action.applyButtonAction(panelComPort.getContent(),panelBaudRate.getContent());
-			}
-		});
+		 * applyButton.addActionListener(new ActionListener() { public void
+		 * actionPerformed(ActionEvent e) {
+		 * action.applyButtonAction(panelComPort.getContent(),panelBaudRate.
+		 * getContent()); } });
+		 *
+		 */
 
-		*/
-
-		//ボタンアクション
+		// ボタンアクション
 
 		/*
-		addDocumentListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				action.sendButtonAction(panelComPort.getContent(),
-					panelBaudRate.getContent(),textField.getText());
-			}
-		});
-
-		*/
-
+		 * addDocumentListener(new ActionListener() { public void
+		 * actionPerformed(ActionEvent e) {
+		 * action.sendButtonAction(panelComPort.getContent(),
+		 * panelBaudRate.getContent(),textField.getText()); } });
+		 *
+		 */
 
 	}
 

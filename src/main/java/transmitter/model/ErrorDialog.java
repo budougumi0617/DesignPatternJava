@@ -1,7 +1,7 @@
 /**
  * @file 2016/10/13
  */
-package transmitter;
+package transmitter.model;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
 public class ErrorDialog {
 
 	/**
-	 * エラーダイアログを生成する
+	 * エラーダイアログを生成するメソッド
 	 *
-	 * @param errorMessage エラー内容のメッセージ
-	 * @wbp.parser.entryPoint
+	 * @param errorMessage
+	 *            エラー内容のメッセージ
 	 */
-	public void showErrorDialog(String errorMessage){
+	public void showErrorDialog(String errorMessage) {
 		JFrame frame = new JFrame();
 		JOptionPane.showMessageDialog(frame, errorMessage, "エラー発生", JOptionPane.ERROR_MESSAGE);
 	}

@@ -1,7 +1,7 @@
 /**
  * @file 2016/10/17
  */
-package transmitter;
+package transmitter.model;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,6 +26,7 @@ public class CheckTextTest {
 
 	/**
 	 * テスト初期設定
+	 *
 	 * @throws Exception
 	 */
 	@Before
@@ -35,6 +36,7 @@ public class CheckTextTest {
 
 	/**
 	 * テスト終了時動作
+	 *
 	 * @throws Exception
 	 */
 	@After
@@ -43,14 +45,12 @@ public class CheckTextTest {
 		method = null;
 	}
 
-
 	/**
-	 * {@link transmitter.CheckText#CheckText()} のためのテスト・メソッド。
+	 * {@link transmitter.model.CheckText#CheckText()} のためのテスト・メソッド。
 	 */
 	@Test
-	public void testCheckText(){
+	public void testCheckText() {
 	}
-
 
 	/**
 	 * {@link transmitter.CheckText#validate(java.lang.String)} のためのテスト・メソッド。
@@ -68,7 +68,6 @@ public class CheckTextTest {
 		assertThat(ct.validate("こんにちは"), is(false));
 	}
 
-
 	/**
 	 * {@link transmitter.CheckText#CheckBlank(java.lang.String)} のためのテスト・メソッド。
 	 */
@@ -79,8 +78,8 @@ public class CheckTextTest {
 		try {
 			method = CheckText.class.getDeclaredMethod("checkBlank", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(ct ,"あいうえお"), is(false));
-		}catch(Exception ex){
+			assertThat(method.invoke(ct, "あいうえお"), is(false));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
@@ -91,8 +90,8 @@ public class CheckTextTest {
 		try {
 			method = CheckText.class.getDeclaredMethod("checkBlank", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(ct ,"		"), is(true));
-		}catch(Exception ex){
+			assertThat(method.invoke(ct, "		"), is(true));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
@@ -106,8 +105,8 @@ public class CheckTextTest {
 		try {
 			method = CheckText.class.getDeclaredMethod("checkLength", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(ct ,"koreha16mojidesu"), is(false));
-		}catch(Exception ex){
+			assertThat(method.invoke(ct, "koreha16mojidesu"), is(false));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
@@ -118,8 +117,8 @@ public class CheckTextTest {
 		try {
 			method = CheckText.class.getDeclaredMethod("checkLength", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(ct ,"koreha17mojidesu!"), is(true));
-		}catch(Exception ex){
+			assertThat(method.invoke(ct, "koreha17mojidesu!"), is(true));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
@@ -134,8 +133,8 @@ public class CheckTextTest {
 		try {
 			method = CheckText.class.getDeclaredMethod("checkType", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(ct ,"aiueo"), is(false));
-		}catch(Exception ex){
+			assertThat(method.invoke(ct, "aiueo"), is(false));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
@@ -146,11 +145,10 @@ public class CheckTextTest {
 		try {
 			method = CheckText.class.getDeclaredMethod("checkType", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(ct ,"あいうえお"), is(true));
-		}catch(Exception ex){
+			assertThat(method.invoke(ct, "あいうえお"), is(true));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
-
 
 }

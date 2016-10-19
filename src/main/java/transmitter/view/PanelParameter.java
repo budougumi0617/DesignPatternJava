@@ -1,7 +1,8 @@
 /**
  * @file 2016/10/13
  */
-package transmitter;
+package transmitter.view;
+
 /**
  * 通信パラメータ設定インタフェース
  *

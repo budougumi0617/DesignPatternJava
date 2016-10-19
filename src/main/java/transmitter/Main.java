@@ -3,6 +3,9 @@
  */
 package transmitter;
 
+import transmitter.view.BulkTransmitter;
+import transmitter.view.Transmitter;
+
 /**
  * mainメソッドを持つクラス
  *
@@ -22,12 +25,11 @@ public class Main {
 		@SuppressWarnings("unused")
 		Transmitter bulkTransmitter = new BulkTransmitter();
 
-
 		/** 【要求仕様B】シリアルデータリアルタイム送信 */
 		/*
-		@SuppressWarnings("unused")
-		Transmitter RealTimeTransmitter = new RealTimeTransmitter();
-		*/
+		 * @SuppressWarnings("unused") Transmitter RealTimeTransmitter = new
+		 * RealTimeTransmitter();
+		 */
 
 	}
 

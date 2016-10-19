@@ -1,7 +1,7 @@
 /**
  * @file 2016/10/18
  */
-package transmitter;
+package transmitter.model;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,11 +21,12 @@ import org.junit.Test;
  */
 public class CheckParameterTest {
 
-	private CheckParameter cp ;
+	private CheckParameter cp;
 	private Method method;
 
 	/**
 	 * テスト初期設定
+	 *
 	 * @throws java.lang.Exception
 	 */
 	@Before
@@ -35,6 +36,7 @@ public class CheckParameterTest {
 
 	/**
 	 * テスト終了時動作
+	 *
 	 * @throws java.lang.Exception
 	 */
 	@After
@@ -43,9 +45,9 @@ public class CheckParameterTest {
 		method = null;
 	}
 
-
 	/**
-	 * {@link transmitter.CheckParameter#validate(java.lang.String)} のためのテスト・メソッド。
+	 * {@link transmitter.CheckParameter#validate(java.lang.String)}
+	 * のためのテスト・メソッド。
 	 */
 
 	/** 【正常系】 入力値が空白でない場合trueを返す */
@@ -61,7 +63,8 @@ public class CheckParameterTest {
 	}
 
 	/**
-	 * {@link transmitter.CheckParameter#CheckBlank(java.lang.String)} のためのテスト・メソッド。
+	 * {@link transmitter.CheckParameter#CheckBlank(java.lang.String)}
+	 * のためのテスト・メソッド。
 	 */
 
 	/** 【正常系】 入力値が空白でない場合falseを返すか判定 */
@@ -70,8 +73,8 @@ public class CheckParameterTest {
 		try {
 			method = CheckParameter.class.getDeclaredMethod("checkBlank", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(cp ,"COM1"), is(false));
-		}catch(Exception ex){
+			assertThat(method.invoke(cp, "COM1"), is(false));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
@@ -82,8 +85,8 @@ public class CheckParameterTest {
 		try {
 			method = CheckParameter.class.getDeclaredMethod("checkBlank", String.class);
 			method.setAccessible(true);
-			assertThat(method.invoke(cp ,""), is(true));
-		}catch(Exception ex){
+			assertThat(method.invoke(cp, ""), is(true));
+		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}

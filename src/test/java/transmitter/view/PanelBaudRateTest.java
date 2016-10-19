@@ -1,7 +1,7 @@
 /**
  * @file 2016/10/18
  */
-package transmitter;
+package transmitter.view;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -22,6 +22,7 @@ public class PanelBaudRateTest {
 
 	/**
 	 * テスト初期設定
+	 *
 	 * @throws java.lang.Exception
 	 */
 	@Before
@@ -31,6 +32,7 @@ public class PanelBaudRateTest {
 
 	/**
 	 * テスト終了時動作
+	 *
 	 * @throws java.lang.Exception
 	 */
 	@After
@@ -45,7 +47,7 @@ public class PanelBaudRateTest {
 	/** 【正常系／初期値】 コンボボックスの初期値""が返ってくる */
 	@Test
 	public void testGetContent1() {
-		assertThat(pb.getContent(),is(""));
+		assertThat(pb.getContent(), is(""));
 	}
 
 }
