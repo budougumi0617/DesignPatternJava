@@ -34,7 +34,7 @@ dependencies {
     compile group: 'org.rxtx', name: 'rxtx', version: '2.1.7'
 
     testCompile 'junit:junit:4.11'
-    testCompile 'org.mockito:mockito-all:1.9.5'
+ // testCompile 'org.mockito:mockito-all:1.9.5' // mockito(other version) is included in powermock package.
     testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.6.4'
 }
 
