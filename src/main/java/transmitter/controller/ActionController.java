@@ -60,13 +60,13 @@ public class ActionController {
 		}
 		;
 
-		/*
+
 		if (!checkParameter.validate(baudRate)) {
 			errorDialog.showErrorDialog("ボーレート（ビット／秒）の値が正しいか確認してください。");
 			return;
 		}
 		;
-		*/
+
 
 		/** 文字列の判定 */
 		if (!checkText.validate(text)) {

@@ -3,6 +3,7 @@
  */
 package transmitter.model;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -97,7 +98,15 @@ public class SendSerialDataTest {
 	 */
 	@Test
 	public void testSetComPort() {
-		fail("まだ実装されていません");
+		try {
+			field = SendSerialData.class.getDeclaredField("comPort");
+			field.setAccessible(true);
+
+			ssd.setComPort("COM1");
+			assertThat((String)field.get(ssd), is("COM1"));
+		} catch (Exception ex) {
+			fail(ex.getMessage());
+		}
 	}
 
 	/**
@@ -109,18 +118,20 @@ public class SendSerialDataTest {
 	 * 【正常系】 引数で受け取ったString型ボーレートがメンバに設定されているか判定
 	 */
 
-	/*
+
 	@Test
 	public void testSetBaudRate() {
 		try {
-			field = SendSerialData.class.getDeclaredMethod("setBaudRate");
+			field = SendSerialData.class.getDeclaredField("baudRate");
 			field.setAccessible(true);
-			assertThat(method.invoke(ct, "あいうえお"), is(false));
+
+			ssd.setBaudRate("9600");
+			assertThat((String)field.get(ssd), is("9600"));
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
-	*/
+
 
 	/**
 	 * {@link transmitter.model.SendSerialData#setText(java.lang.String)}
@@ -132,7 +143,15 @@ public class SendSerialDataTest {
 	 */
 	@Test
 	public void testSetText() {
-		fail("まだ実装されていません");
+		try {
+			field = SendSerialData.class.getDeclaredField("text");
+			field.setAccessible(true);
+
+			ssd.setText("hello");
+			assertThat((String)field.get(ssd), is("hello"));
+		} catch (Exception ex) {
+			fail(ex.getMessage());
+		}
 	}
 
 }

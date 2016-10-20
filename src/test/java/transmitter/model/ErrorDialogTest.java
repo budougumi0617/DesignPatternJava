@@ -4,6 +4,7 @@
 package transmitter.model;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import javax.swing.JFrame;
@@ -38,17 +39,16 @@ public class ErrorDialogTest {
 	 * @throws java.lang.Exception
 	 */
 
-	@SuppressWarnings("static-access")
 	@Before
 	public void setUp() throws Exception {
 		ed = new ErrorDialog();
 
+		/** Mockitの作成 */
 		jopMock = mock(JOptionPane.class);
 		fMock = mock(JFrame.class);
 
 		MockitoAnnotations.initMocks(this);
 
-		doNothing().when(jopMock).showMessageDialog(fMock, "エラーメッセージを出力します。", "エラー発生", jopMock.ERROR_MESSAGE);
 	}
 
 	/**
@@ -68,10 +68,13 @@ public class ErrorDialogTest {
 
 	/** 【正常系】 与えられたString引数をエラーダイアログに出力できるか確認 */
 
+	@SuppressWarnings("static-access")
 	@Test
 	public void testShowErrorDialog() {
 		try {
 			ed.showErrorDialog("エラーメッセージを出力します。");
+			verify(jopMock).showMessageDialog((JFrame)anyObject(), "エラーメッセージを出力します。", "エラー発生",
+					JOptionPane.ERROR_MESSAGE);
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}

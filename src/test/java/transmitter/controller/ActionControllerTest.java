@@ -4,6 +4,7 @@
 package transmitter.controller;
 
 import static org.junit.Assert.*;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.After;
@@ -57,16 +58,6 @@ public class ActionControllerTest {
 
 		MockitoAnnotations.initMocks(this);
 
-		/*
-		 * 【SendSerialDataクラスのMockit／setComPortメソッドの設定】
-		 *
-		 * comPort正常値：COM1 baudRate正常値：9600 text正常値：hello
-		 *
-		 */
-		doNothing().when(ssdMock).setComPort("COM1");
-		doNothing().when(ssdMock).setBaudRate("9600");
-		doNothing().when(ssdMock).setText("hello");
-
 	}
 
 	/**
@@ -94,8 +85,13 @@ public class ActionControllerTest {
 	@Test
 	public void testSendButtonAction1() {
 		try {
+			when(cpMock.validate("COM1")).thenReturn(true);
+			when(cpMock.validate("9600")).thenReturn(true);
+			when(ctMock.validate("hello")).thenReturn(true);
+
 			ac.sendButtonAction("COM1", "9600", "hello");
-			verify(edMock , never() ).showErrorDialog(String(object));
+			verify(edMock, never()).showErrorDialog((String)anyObject());
+
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
@@ -110,8 +106,11 @@ public class ActionControllerTest {
 		try {
 			when(cpMock.validate("9600")).thenReturn(true);
 			when(cpMock.validate("")).thenReturn(false);
+			when(ctMock.validate("hello")).thenReturn(true);
+
 			ac.sendButtonAction("", "9600", "hello");
-			verify(edMock , times(0)).showErrorDialog("COMポート番号が正しいか確認してください。");
+			verify(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
+
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
@@ -126,8 +125,11 @@ public class ActionControllerTest {
 		try {
 			when(cpMock.validate("COM1")).thenReturn(true);
 			when(cpMock.validate("")).thenReturn(false);
+			when(ctMock.validate("hello")).thenReturn(true);
+
 			ac.sendButtonAction("COM1", "", "hello");
 			verify(edMock).showErrorDialog("ボーレート（ビット／秒）の値が正しいか確認してください。");
+
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
@@ -140,11 +142,13 @@ public class ActionControllerTest {
 	@Test
 	public void testSendButtonAction4() {
 		try {
-			when(ctMock.validate("こんにちは")).thenReturn(false);
 			when(cpMock.validate("COM1")).thenReturn(true);
 			when(cpMock.validate("9600")).thenReturn(true);
-			ac.sendButtonAction("COM1", "9700", "こんにちは");
-			verify(edMock , times(0)).showErrorDialog("メッセージは半角英数字16文字までです。");
+			when(ctMock.validate("こんにちは")).thenReturn(false);
+
+			ac.sendButtonAction("COM1", "9600", "こんにちは");
+			verify(edMock).showErrorDialog("メッセージは半角英数字16文字までです。");
+
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
@@ -157,7 +161,12 @@ public class ActionControllerTest {
 	@Test
 	public void testSendButtonAction5() {
 		try {
+			when(cpMock.validate("COM1")).thenReturn(true);
+			when(cpMock.validate("9600")).thenReturn(true);
+			when(ctMock.validate("hello")).thenReturn(true);
+
 			doThrow(new NoSuchPortException()).when(ssdMock).open();
+
 			doNothing().when(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
 			ac.sendButtonAction("COM1", "9600", "hello");
 		} catch (Exception ex) {
@@ -172,7 +181,12 @@ public class ActionControllerTest {
 	@Test
 	public void testSendButtonAction6() {
 		try {
+			when(cpMock.validate("COM1")).thenReturn(true);
+			when(cpMock.validate("9600")).thenReturn(true);
+			when(ctMock.validate("hello")).thenReturn(true);
+
 			doThrow(new PortInUseException()).when(ssdMock).open();
+
 			doNothing().when(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
 			ac.sendButtonAction("COM1", "9600", "hello");
 		} catch (Exception ex) {
@@ -188,7 +202,12 @@ public class ActionControllerTest {
 	@Test
 	public void testSendButtonAction7() {
 		try {
+			when(cpMock.validate("COM1")).thenReturn(true);
+			when(cpMock.validate("9600")).thenReturn(true);
+			when(ctMock.validate("hello")).thenReturn(true);
+
 			doThrow(new UnsupportedCommOperationException()).when(ssdMock).open();
+
 			doNothing().when(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
 			ac.sendButtonAction("COM1", "9600", "hello");
 		} catch (Exception ex) {
@@ -197,13 +216,18 @@ public class ActionControllerTest {
 	}
 
 	/**
-	 * 【異常系／エラー】 SendSerialDataクラスopenメソッドでExceptionエラーを検出した際に
-	 * ErrorDialogクラスのshowErrorDialogメソッドに「COMポート番号が正しいか確認してください。」が引数として渡されるか判定
+	 * 【異常系／エラー】 SendSerialDataクラスstreamメソッドでExceptionエラーを検出した際に
+	 * ErrorDialogクラスのshowErrorDialogメソッドに「エラーが発生しました。」が引数として渡されるか判定
 	 */
 	@Test
 	public void testSendButtonAction8() {
 		try {
-			doThrow(new Exception()).when(ssdMock).open();
+			when(cpMock.validate("COM1")).thenReturn(true);
+			when(cpMock.validate("9600")).thenReturn(true);
+			when(ctMock.validate("hello")).thenReturn(true);
+
+			doThrow(new Exception()).when(ssdMock).stream();
+
 			doNothing().when(edMock).showErrorDialog("エラーが発生しました。");
 			ac.sendButtonAction("COM1", "9600", "hello");
 		} catch (Exception ex) {
