@@ -43,10 +43,11 @@ public class ActionControllerTest {
 	private CheckText ctMock;
 
 	/**
-	 * @throws java.lang.Exception
+	 * テスト初期設定
+	 *
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 
 		ac = new ActionController();
 
@@ -61,10 +62,11 @@ public class ActionControllerTest {
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * テスト終了時動作
+	 *
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		ac = null;
 		ssdMock = null;
 		edMock = null;
@@ -90,7 +92,7 @@ public class ActionControllerTest {
 			when(ctMock.validate("hello")).thenReturn(true);
 
 			ac.sendButtonAction("COM1", "9600", "hello");
-			verify(edMock, never()).showErrorDialog((String)anyObject());
+			verify(edMock, never()).showErrorDialog((String) anyObject());
 
 		} catch (Exception ex) {
 			fail(ex.getMessage());
@@ -155,7 +157,7 @@ public class ActionControllerTest {
 	}
 
 	/**
-	 * 【異常系／エラー】 SendSerialDataクラスopenメソッドでNoSuchPortExceptionエラーを検出した際に
+	 * 【異常系／例外】 SendSerialDataクラスopenメソッドで例外NoSuchPortExceptionを検出した際に
 	 * ErrorDialogクラスのshowErrorDialogメソッドに「COMポート番号が正しいか確認してください。」が引数として渡されるか判定
 	 */
 	@Test
@@ -166,16 +168,17 @@ public class ActionControllerTest {
 			when(ctMock.validate("hello")).thenReturn(true);
 
 			doThrow(new NoSuchPortException()).when(ssdMock).open();
-
 			doNothing().when(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
+
 			ac.sendButtonAction("COM1", "9600", "hello");
+			verify(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
 
 	/**
-	 * 【異常系／エラー】 SendSerialDataクラスopenメソッドでPortInUseExceptionエラーを検出した際に
+	 * 【異常系／例外】 SendSerialDataクラスopenメソッドで例外PortInUseExceptionを検出した際に
 	 * ErrorDialogクラスのshowErrorDialogメソッドに「COMポート番号が正しいか確認してください。」が引数として渡されるか判定
 	 */
 	@Test
@@ -186,17 +189,18 @@ public class ActionControllerTest {
 			when(ctMock.validate("hello")).thenReturn(true);
 
 			doThrow(new PortInUseException()).when(ssdMock).open();
-
 			doNothing().when(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
+
 			ac.sendButtonAction("COM1", "9600", "hello");
+			verify(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
 
 	/**
-	 * 【異常系／エラー】
-	 * SendSerialDataクラスopenメソッドでUnsupportedCommOperationExceptionエラーを検出した際に
+	 * 【異常系／例外】
+	 * SendSerialDataクラスopenメソッドで例外UnsupportedCommOperationExceptionを検出した際に
 	 * ErrorDialogクラスのshowErrorDialogメソッドに「COMポート番号が正しいか確認してください。」が引数として渡されるか判定
 	 */
 	@Test
@@ -207,16 +211,17 @@ public class ActionControllerTest {
 			when(ctMock.validate("hello")).thenReturn(true);
 
 			doThrow(new UnsupportedCommOperationException()).when(ssdMock).open();
-
 			doNothing().when(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
+
 			ac.sendButtonAction("COM1", "9600", "hello");
+			verify(edMock).showErrorDialog("COMポート番号が正しいか確認してください。");
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
 	}
 
 	/**
-	 * 【異常系／エラー】 SendSerialDataクラスstreamメソッドでExceptionエラーを検出した際に
+	 * 【異常系／例外】 SendSerialDataクラスstreamメソッドで例外Exceptionを検出した際に
 	 * ErrorDialogクラスのshowErrorDialogメソッドに「エラーが発生しました。」が引数として渡されるか判定
 	 */
 	@Test
@@ -227,9 +232,10 @@ public class ActionControllerTest {
 			when(ctMock.validate("hello")).thenReturn(true);
 
 			doThrow(new Exception()).when(ssdMock).stream();
-
 			doNothing().when(edMock).showErrorDialog("エラーが発生しました。");
+
 			ac.sendButtonAction("COM1", "9600", "hello");
+			verify(edMock).showErrorDialog("エラーが発生しました。");
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}

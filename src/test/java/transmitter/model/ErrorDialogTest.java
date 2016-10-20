@@ -36,11 +36,9 @@ public class ErrorDialogTest {
 	/**
 	 * テスト初期設定
 	 *
-	 * @throws java.lang.Exception
 	 */
-
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		ed = new ErrorDialog();
 
 		/** Mockitの作成 */
@@ -54,11 +52,12 @@ public class ErrorDialogTest {
 	/**
 	 * テスト終了時動作
 	 *
-	 * @throws java.lang.Exception
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		ed = null;
+		jopMock = null;
+		fMock = null;
 	}
 
 	/**
@@ -68,17 +67,16 @@ public class ErrorDialogTest {
 
 	/** 【正常系】 与えられたString引数をエラーダイアログに出力できるか確認 */
 
-	@SuppressWarnings("static-access")
 	@Test
 	public void testShowErrorDialog() {
 		try {
+			doNothing().when(jopMock).showMessageDialog((JFrame) anyObject(), (String) anyObject(),
+					(String) anyObject(), 0);
 			ed.showErrorDialog("エラーメッセージを出力します。");
-			verify(jopMock).showMessageDialog((JFrame)anyObject(), "エラーメッセージを出力します。", "エラー発生",
-					JOptionPane.ERROR_MESSAGE);
+			verify(jopMock).showMessageDialog((JFrame) anyObject(), "エラーメッセージを出力します。", "エラー発生", 0);
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
-
 	}
 
 }

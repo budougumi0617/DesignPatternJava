@@ -15,6 +15,7 @@ public interface OutPut {
 	 * 出力先を接続するメソッドの定義
 	 *
 	 * @throws Exception
+	 *             発生する例外を全てthrowsする
 	 */
 	void open() throws Exception;
 
@@ -22,6 +23,7 @@ public interface OutPut {
 	 * データを出力するメソッドの定義
 	 *
 	 * @throws Exception
+	 *             発生する例外を全てthrowsする
 	 */
 	void stream() throws Exception;
 
@@ -29,6 +31,7 @@ public interface OutPut {
 	 * 出力先との接続を閉じるメソッドの定義
 	 *
 	 * @throws Exception
+	 *             発生する例外を全てthrowsする
 	 */
 	void close() throws Exception;
 

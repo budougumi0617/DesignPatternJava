@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class ErrorDialog {
 
+	private JFrame frame = new JFrame();
+
 	/**
 	 * エラーダイアログを生成するメソッド
 	 *
@@ -21,8 +23,8 @@ public class ErrorDialog {
 	 *            エラー内容のメッセージ
 	 */
 	public void showErrorDialog(String errorMessage) {
-		JFrame frame = new JFrame();
-		JOptionPane.showMessageDialog(frame, errorMessage, "エラー発生", JOptionPane.ERROR_MESSAGE);
+
+		JOptionPane.showMessageDialog(frame, errorMessage, "エラー発生", 0);
 	}
 
 }

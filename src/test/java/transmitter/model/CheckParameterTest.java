@@ -27,20 +27,18 @@ public class CheckParameterTest {
 	/**
 	 * テスト初期設定
 	 *
-	 * @throws java.lang.Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		cp = new CheckParameter();
 	}
 
 	/**
 	 * テスト終了時動作
 	 *
-	 * @throws java.lang.Exception
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		cp = null;
 		method = null;
 	}

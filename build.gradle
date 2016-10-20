@@ -25,14 +25,17 @@ repositories {
     mavenCentral()
     maven {
         url "https://mvnrepository.com/artifact/org.rxtx/rxtx"
+        url "https://mvnrepository.com/artifact/org.powermock/powermock-mockito-release-full"
     }
 }
 
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     compile group: 'org.rxtx', name: 'rxtx', version: '2.1.7'
+
     testCompile 'junit:junit:4.11'
     testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile group: 'org.powermock', name: 'powermock-mockito-release-full', version: '1.6.4'
 }
 
 test {
@@ -60,3 +63,8 @@ jacocoTestReport {
 }
 
 cobertura.coverageFormats = ['html', 'xml']
+
+javadoc {
+   options.charSet = 'utf-8'
+   options.encoding = 'utf-8'
+}

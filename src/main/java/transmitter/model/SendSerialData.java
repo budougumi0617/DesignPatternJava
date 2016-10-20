@@ -24,11 +24,16 @@ public class SendSerialData implements OutPut {
 	/** String型 入力文字列 */
 	private String text;
 	/** シリアルポート */
-	private SerialPort port;
+	private SerialPort port = null;
 
 	/**
 	 * 使用するCOMポートを取得するメソッド
+	 * 
+	 * @throws Exception
+	 *             発生する例外を全てthrowsする
+	 * 
 	 */
+
 	@Override
 	public void open() throws Exception {
 
@@ -43,6 +48,10 @@ public class SendSerialData implements OutPut {
 
 	/**
 	 * OutPutStreamで文字列データを一文字づつ送信する
+	 * 
+	 * @throws Exception
+	 *             発生する例外を全てthrowsする
+	 * 
 	 */
 	@Override
 	public void stream() throws Exception {
@@ -55,7 +64,7 @@ public class SendSerialData implements OutPut {
 		for (int i = 0; i < text.length(); i++) {
 			out.write(text.charAt(i));
 		}
-		
+
 		// Arrays.streame(text.toCharArray()).forEachOrdered(c -> out.write(c));
 
 		out.close();
@@ -63,6 +72,10 @@ public class SendSerialData implements OutPut {
 
 	/**
 	 * シリアルポートを閉じるメソッド
+	 * 
+	 * @throws Exception
+	 *             発生する例外を全てthrowsする
+	 * 
 	 */
 	@Override
 	public void close() throws Exception {

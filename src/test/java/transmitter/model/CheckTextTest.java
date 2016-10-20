@@ -27,29 +27,20 @@ public class CheckTextTest {
 	/**
 	 * テスト初期設定
 	 *
-	 * @throws Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		ct = new CheckText();
 	}
 
 	/**
 	 * テスト終了時動作
 	 *
-	 * @throws Exception
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		ct = null;
 		method = null;
-	}
-
-	/**
-	 * {@link transmitter.model.CheckText#CheckText()} のためのテスト・メソッド。
-	 */
-	@Test
-	public void testCheckText() {
 	}
 
 	/**

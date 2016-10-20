@@ -56,7 +56,7 @@ public class PanelBaudRate extends JPanel implements PanelParameter {
 	/**
 	 * コンボボックス入力値を返す
 	 *
-	 * @return
+	 * @return コンボボックス入力値
 	 */
 	@Override
 	public String getContent() {

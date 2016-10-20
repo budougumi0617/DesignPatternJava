@@ -23,20 +23,18 @@ public class PanelBaudRateTest {
 	/**
 	 * テスト初期設定
 	 *
-	 * @throws java.lang.Exception
 	 */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		pb = new PanelBaudRate();
 	}
 
 	/**
 	 * テスト終了時動作
 	 *
-	 * @throws java.lang.Exception
 	 */
 	@After
-	public void tearDown() throws Exception {
+	public void tearDown() {
 		pb = null;
 	}
 
