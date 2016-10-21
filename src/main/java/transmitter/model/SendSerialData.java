@@ -28,12 +28,11 @@ public class SendSerialData implements OutPut {
 
 	/**
 	 * 使用するCOMポートを取得するメソッド
-	 * 
+	 *
 	 * @throws Exception
 	 *             発生する例外を全てthrowsする
-	 * 
+	 *
 	 */
-
 	@Override
 	public void open() throws Exception {
 
@@ -48,10 +47,10 @@ public class SendSerialData implements OutPut {
 
 	/**
 	 * OutPutStreamで文字列データを一文字づつ送信する
-	 * 
+	 *
 	 * @throws Exception
 	 *             発生する例外を全てthrowsする
-	 * 
+	 *
 	 */
 	@Override
 	public void stream() throws Exception {
@@ -65,17 +64,15 @@ public class SendSerialData implements OutPut {
 			out.write(text.charAt(i));
 		}
 
-		// Arrays.streame(text.toCharArray()).forEachOrdered(c -> out.write(c));
-
 		out.close();
 	}
 
 	/**
 	 * シリアルポートを閉じるメソッド
-	 * 
+	 *
 	 * @throws Exception
 	 *             発生する例外を全てthrowsする
-	 * 
+	 *
 	 */
 	@Override
 	public void close() throws Exception {
@@ -83,16 +80,31 @@ public class SendSerialData implements OutPut {
 	}
 
 	/**
-	 * セッターメソッド
+	 * COMポート番号のセッターメソッド
+	 *
+	 * @param comPort
+	 *            String型 COMポート番号
 	 */
 	public void setComPort(String comPort) {
 		this.comPort = comPort;
 	}
 
+	/**
+	 * ボーレートのセッターメソッド
+	 *
+	 * @param baudRate
+	 *            String型 ボーレート
+	 */
 	public void setBaudRate(String baudRate) {
 		this.baudRate = baudRate;
 	}
 
+	/**
+	 * 入力文字列のセッターメソッド
+	 *
+	 * @param text
+	 *            String型 入力文字列
+	 */
 	public void setText(String text) {
 		this.text = text;
 	}

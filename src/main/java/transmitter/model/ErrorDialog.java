@@ -20,7 +20,7 @@ public class ErrorDialog {
 	 * エラーダイアログを生成するメソッド
 	 *
 	 * @param errorMessage
-	 *            エラー内容のメッセージ
+	 *            String型 エラー内容のメッセージ
 	 */
 	public void showErrorDialog(String errorMessage) {
 

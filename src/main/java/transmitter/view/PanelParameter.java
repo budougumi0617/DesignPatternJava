@@ -11,7 +11,11 @@ package transmitter.view;
  */
 public interface PanelParameter {
 
-	/** コンボボックス入力値を返すメソッドの定義 */
+	/**
+	 * コンボボックス入力値を返すメソッドの定義
+	 *
+	 * @return String型 コンボボックス入力値
+	 */
 	String getContent();
 
 }

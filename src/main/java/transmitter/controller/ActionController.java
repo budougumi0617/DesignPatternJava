@@ -20,22 +20,22 @@ import transmitter.model.SendSerialData;
 public class ActionController {
 
 	/**
-	 * パラメータの入力値を判定する CheckParameterクラスのインスタンス
+	 * パラメータの入力値を判定するCheckParameterクラスのインスタンス
 	 */
 	private CheckParameter checkParameter = new CheckParameter();
 
 	/**
-	 * 入力文字列を判定する CheckTextクラスのインスタンス
+	 * 入力文字列を判定するCheckTextクラスのインスタンス
 	 */
 	private CheckText checkText = new CheckText();
 
 	/**
-	 * パラメータコンボボックスの入力値を判定する CheckParameterクラスのインスタンス
+	 * パラメータコンボボックスの入力値を判定するCheckParameterクラスのインスタンス
 	 */
 	private SendSerialData sendSerialData = new SendSerialData();
 
 	/**
-	 * パラメータコンボボックスの入力値を判定する CheckParameterクラスのインスタンス
+	 * パラメータコンボボックスの入力値を判定するCheckParameterクラスのインスタンス
 	 */
 	private ErrorDialog errorDialog = new ErrorDialog();
 
@@ -60,13 +60,11 @@ public class ActionController {
 		}
 		;
 
-
 		if (!checkParameter.validate(baudRate)) {
 			errorDialog.showErrorDialog("ボーレート（ビット／秒）の値が正しいか確認してください。");
 			return;
 		}
 		;
-
 
 		/** 文字列の判定 */
 		if (!checkText.validate(text)) {

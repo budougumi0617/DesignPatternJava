@@ -4,7 +4,6 @@
 package transmitter.model;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 
 import javax.swing.JFrame;
@@ -13,9 +12,18 @@ import javax.swing.JOptionPane;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+@RunWith(PowerMockRunner.class)
+// SettingsDaoに対して利用
+@PrepareForTest(JOptionPane.class)
 
 /**
  * ErrorDialogクラスのテスト
@@ -65,15 +73,17 @@ public class ErrorDialogTest {
 	 * のためのテスト・メソッド。
 	 */
 
-	/** 【正常系】 与えられたString引数をエラーダイアログに出力できるか確認 */
-
+	/**
+	 * 【正常系】 showErrorDialog()メソッドを呼び出した際に、JOptionPaneクラスのshowMessageDialog()
+	 * が呼び出されているか判定
+	 */
 	@Test
 	public void testShowErrorDialog() {
 		try {
-			doNothing().when(jopMock).showMessageDialog((JFrame) anyObject(), (String) anyObject(),
-					(String) anyObject(), 0);
+			PowerMockito.mockStatic(JOptionPane.class);
 			ed.showErrorDialog("エラーメッセージを出力します。");
-			verify(jopMock).showMessageDialog((JFrame) anyObject(), "エラーメッセージを出力します。", "エラー発生", 0);
+			PowerMockito.verifyStatic(Mockito.times(1));
+
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}

@@ -17,7 +17,8 @@ public class Main {
 	/**
 	 * 通信アプリGUIインスタンスを生成する
 	 *
-	 * @param args 引数
+	 * @param args
+	 *            引数
 	 */
 	public static void main(String[] args) {
 
