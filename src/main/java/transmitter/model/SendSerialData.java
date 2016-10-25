@@ -64,6 +64,9 @@ public class SendSerialData implements OutPut {
 			out.write(text.charAt(i));
 		}
 
+		/* Arduino側で文字列終端を認識するため、終端文字の \0 を送る */
+		out.write(0x00);
+
 		out.close();
 	}
 
