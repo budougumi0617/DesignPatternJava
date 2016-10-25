@@ -3,7 +3,6 @@
  */
 package transmitter.model;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,8 +21,10 @@ public class ErrorDialog {
 	 */
 	public void showErrorDialog(String errorMessage) {
 
-		JFrame frame = new JFrame();
-		JOptionPane.showMessageDialog(frame, errorMessage, "エラー発生", 0);
+		Object[] selectvalue = { "戻る" };
+		JOptionPane.showOptionDialog(null, errorMessage, "エラー発生", JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE,
+				null, selectvalue, null);
+
 	}
 
 }
