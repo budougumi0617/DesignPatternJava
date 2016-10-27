@@ -20,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -28,8 +29,7 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(CommPortIdentifier.class)
-
+@PrepareForTest({SendSerialData.class, PortIdentifierWrapper.class})
 /**
  * @author ema195y
  *
@@ -39,8 +39,7 @@ public class SendSerialDataTest {
 	@InjectMocks
 	private SendSerialData ssd;
 
-	@Mock
-	private CommPortIdentifier cpiMock;
+
 	@Mock
 	private CommPort compMock;
 	@Mock
@@ -59,7 +58,6 @@ public class SendSerialDataTest {
 		ssd = new SendSerialData();
 
 		/** Mockitの作成 */
-		cpiMock = mock(CommPortIdentifier.class);
 		compMock = mock(CommPort.class);
 		serialpMock = mock(SerialPort.class);
 		opsMock = mock(OutputStream.class);
@@ -74,9 +72,9 @@ public class SendSerialDataTest {
 	@After
 	public void tearDown() {
 		ssd = null;
-		cpiMock = null;
 		compMock = null;
 		serialpMock = null;
+		opsMock = null;
 	}
 
 	/**
@@ -95,10 +93,8 @@ public class SendSerialDataTest {
 			ssd.setBaudRate("9600");
 
 			/* CommPortIdentifierのstaticメソッドを呼び出すためにMock化する */
-			PowerMockito.mockStatic(CommPortIdentifier.class);
-			when(CommPortIdentifier.getPortIdentifier((String) anyObject())).thenReturn(cpiMock);
-
-			when(cpiMock.open(Mockito.anyString(), Mockito.anyInt())).thenReturn(serialpMock);
+			PowerMockito.mockStatic(PortIdentifierWrapper.class);
+			when(PortIdentifierWrapper.getCommPort((String) anyObject())).thenReturn(serialpMock);
 			doNothing().when(serialpMock).setSerialPortParams(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyInt(),
 					Mockito.anyInt());
 			doNothing().when(serialpMock).setFlowControlMode(Mockito.anyInt());

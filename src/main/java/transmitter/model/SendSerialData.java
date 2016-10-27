@@ -36,8 +36,8 @@ public class SendSerialData implements OutPut {
 	@Override
 	public void open() throws Exception {
 
-		CommPortIdentifier comID = CommPortIdentifier.getPortIdentifier(comPort);
-		CommPort cm = comID.open("Arduino Uno", 2000);
+
+		CommPort cm = PortIdentifierWrapper.getCommPort(comPort);
 		port = (SerialPort) cm;
 		port.setSerialPortParams(Integer.parseInt(baudRate), SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 				SerialPort.PARITY_NONE);
