@@ -7,9 +7,9 @@
  */
 package com.budougumi0617.strategy;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.when;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.mockito.Mockito.*;
 
 import java.util.Map;
 
@@ -43,6 +43,7 @@ public class OnlineCartTest {
 	// Mockito is able to inject stub to member variable in target class.
 	@InjectMocks
 	OnlineCart oc = new OnlineCart();
+
 
 	@Before
 	public void setup() {
