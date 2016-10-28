@@ -1,26 +1,34 @@
 #include <LiquidCrystal.h>
+#define MAX_LEN 16
+#define BUFF_LEN 64
 
 LiquidCrystal lcd = LiquidCrystal(5, 6, 7, 8, 9, 10, 11);
-int counter = 0;
-const int maxlen = 17;
-char buff[maxlen];
 
-void setup() {
+int counter = 0;
+char buff[BUFF_LEN];
+char output[MAX_LEN];
+char data;
+int i = 0;
+
+void setup(){
   Serial.begin(9600);
 }
 
 void loop(){
+  while(Serial.available() > 0) {
+      data = Serial.read();
+      buff[counter] = data;
+      counter++;
+  }
 
-    if (Serial.available()>0){
-        char data = Serial.read();
+  if(counter > 0){
+      lcd.clear();
+      lcd.print(buff);
 
-        if(data != '\0'){
-            buff[counter] = data;
-            counter++;
-        }else {
-            lcd.print(buff);
-            counter = 0;
-            buff[maxlen] = {0};         
-        } 
-    }
+      for(i = 0 ; i < counter ; i++ ){
+         buff[i] = '\0';
+      }
+      counter = 0;
+   }
+
 }
