@@ -59,6 +59,12 @@ public class CheckTextTest {
 		assertThat(ct.validate("こんにちは"), is(false));
 	}
 
+	/** 【正常系】 半角英数かつ16文字以下かつ空白を含む場合falseを返す */
+	@Test
+	public void testValidate3() {
+		assertThat(ct.validate("ab c"), is(false));
+	}
+
 	/**
 	 * {@link transmitter.CheckText#CheckBlank(java.lang.String)} のためのテスト・メソッド。
 	 */
@@ -137,6 +143,18 @@ public class CheckTextTest {
 			method = CheckText.class.getDeclaredMethod("checkType", String.class);
 			method.setAccessible(true);
 			assertThat(method.invoke(ct, "あいうえお"), is(true));
+		} catch (Exception ex) {
+			fail(ex.getMessage());
+		}
+	}
+
+	/** 【異常系】 文字列が半角英数字と半角英数字以外の文字を含む場合trueを返すか判定 */
+	@Test
+	public void testCheckType3() {
+		try {
+			method = CheckText.class.getDeclaredMethod("checkType", String.class);
+			method.setAccessible(true);
+			assertThat(method.invoke(ct, "aａ1１"), is(true));
 		} catch (Exception ex) {
 			fail(ex.getMessage());
 		}
