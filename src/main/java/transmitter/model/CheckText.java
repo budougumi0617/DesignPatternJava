@@ -36,7 +36,7 @@ public class CheckText {
 	 * @return 入力値に空白が含まれている場合trueを返し、含まれていなければfalseを返す
 	 */
 	private boolean checkBlank(String text) {
-		return text.matches("" + "[\t 　]*+");
+		return text.matches(""+"^[\t 　]*$");
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class CheckText {
 	 * @return 入力値が半角英数字でない場合trueを返し、半角英数字の場合falseを返す
 	 */
 	private boolean checkType(String text) {
-		return text.matches("[^0-9a-zA-Z]+");
+		return !text.matches("^[0-9a-zA-Z]*$");
 	}
 
 }
