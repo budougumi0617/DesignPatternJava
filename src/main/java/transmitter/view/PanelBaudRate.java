@@ -36,7 +36,7 @@ public class PanelBaudRate extends JPanel implements PanelParameter {
 	private void init() {
 
 		/* コンボボックスに値を設定する 初期値は""を代入 */
-		String[] comboData = { "", "75", "110", "134", "150", "300", "600", "1200", "1800", "2400", "4800", "7200",
+		String[] comboData = { "", "600", "1200", "1800", "2400", "4800", "7200",
 				"9600", "14400", "19200", "38400", "57600", "115200", "128000" };
 		comboBaudRate = new JComboBox<String>(comboData);
 
